@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600');
+body{
+  font-family: Montserrat;
+  width: 100% !important;
+  height: 100vh;
+}
+
+* svg{
+  transition: all 0.5s ease-in-out;
+}
+
+footer svg{
+  color: rgb(255,255,255);
+}
+
+.logos:hover{
+  transform: scale(1.1);
+}
+
+strong{
+  color: rgb(70,159,240);
+}
+
+#blue, #red, #orange, #green{
+  color: rgb(0,0,0);
+}
+
+#blue:hover{
+  color: rgb(70,159,240);
+}
+
+#red:hover{
+  color: rgb(238,109,82);
+}
+
+#orange:hover{
+  color: #F9A825;
+}
+
+#green:hover{
+  color: rgb(102,220,120);
+}
+
+#appstore:hover{
+  color: rgb(70,159,240);
+}
+
+#playstore:hover{
+  color: rgb(102,220,120);
+}
+
+.btn-dark:hover{
+  color: #000;
+  background-color: #fff;
+  border-color: #000;
+}
+
+footer p{
+  padding: 0;
+  margin: 0;
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+}
+
+ul li{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li a{
+  color: rgb(70,159,240);
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+}
+
+ul li a:hover{
+  text-decoration: none;
+  color: #000;
+}
+
+div#id_password{
+  display: none !important;
+  /* visibility:hidden !important; */
+}

@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600');
+body{
+  font-family: Montserrat;
+  width: 100% !important;
+  height: 100vh;
+}
+
+* svg{
+  transition: all 0.5s ease-in-out;
+}
+
+footer svg{
+  color: rgb(255,255,255);
+}
+
+.logos:hover{
+  transform: scale(1.1);
+}
+
+strong{
+  color: rgb(70,159,240);
+}
+
+#blue, #red, #orange, #green{
+  color: rgb(0,0,0);
+}
+
+#blue:hover{
+  color: rgb(70,159,240);
+}
+
+#red:hover{
+  color: rgb(238,109,82);
+}
+
+#orange:hover{
+  color: #F9A825;
+}
+
+#green:hover{
+  color: rgb(102,220,120);
+}
+
+#appstore:hover{
+  color: rgb(70,159,240);
+}
+
+#playstore:hover{
+  color: rgb(102,220,120);
+}
+
+.btn-dark{
+
+}
+
+.btn-dark:hover{
+  color: #000;
+  background-color: #fff;
+  border-color: #000;
+}
+
+footer p{
+  padding: 0;
+  margin: 0;
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+}
+
+ul li{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li a{
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+}
+
+ul li a:hover{
+  text-decoration: none;
+  color: #fff;
+}
+
+#nav{
+  background-color: rgb(70,159,240);
+  -webkit-clip-path: polygon(0 20%, 100% 0%, 100% 80%, 0% 100%);
+  clip-path: polygon(0 20%, 100% 0%, 100% 80%, 0% 100%);
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+    #nav{
+    background-color: rgb(255,255,255);
+    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .card {
+      width: 90vw;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .card {
+      width: 90vw;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .card {
+    width: 60vw;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .card {
+    width: 18rem;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .card {
+    width: 18rem;
+  }
+}

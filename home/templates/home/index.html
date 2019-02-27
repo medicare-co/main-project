@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home/css/main.css' %}" type="text/css">
+
+    <title>MediCare</title>
+    <style>
+
+    </style>
+
+  </head>
+  <body>
+    <div class="container">
+    <h1 class="display-1 text-center" id="top">Med<strong>i</strong>Care</h1>
+  <div class="text-center">
+    <svg id="blue" aria-hidden="true" style="width: 40px;" data-prefix="far" data-icon="hospital" class="svg-inline--fa fa-hospital fa-w-14 logos" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+    <path fill="currentColor" d="M128 244v-40c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12zm140 12h40c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12zm-76 84v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm76 12h40c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12zm180 124v36H0v-36c0-6.627 5.373-12 12-12h19.5V85.035C31.5 73.418 42.245 64 55.5 64H144V24c0-13.255 10.745-24 24-24h112c13.255 0 24 10.745 24 24v40h88.5c13.255 0 24 9.418 24 21.035V464H436c6.627 0 12 5.373 12 12zM79.5 463H192v-67c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v67h112.5V112H304v24c0 13.255-10.745 24-24 24H168c-13.255 0-24-10.745-24-24v-24H79.5v351zM266 64h-26V38a6 6 0 0 0-6-6h-20a6 6 0 0 0-6 6v26h-26a6 6 0 0 0-6 6v20a6 6 0 0 0 6 6h26v26a6 6 0 0 0 6 6h20a6 6 0 0 0 6-6V96h26a6 6 0 0 0 6-6V70a6 6 0 0 0-6-6z"></path></svg>
+  </div>
+  <div class="text-center">
+  {% if user.is_authenticated %}
+    <br>
+    <p>Hello <strong>{{ user.first_name }}</strong>, your <a href="{% url 'view_profile' %}">profile</a>/<a href="{% url 'logout' %}">logout</a></p>
+  {% endif %}
+</div>
+<hr>
+
+<div class="d-flex justify-content-center">
+  <nav class="navbar navbar-expand-lg navbar-light" id="nav">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <!-- <a class="navbar-brand" href="#">Hidden brand</a> -->
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Download</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}">About</a>
+        </li>
+      </ul>
+      <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+    </div>
+  </nav>
+</div>
+
+<br>
+
+<h2 class="display-3 text-center py-2">Your medicines, <br>one click away</h2>
+
+<br>
+
+<div class="text-center">
+<div class="container d-flex justify-content-center">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card shadow" style="width: 18rem;">
+        <div class="text-center">
+          <br>
+        <svg id="blue" aria-hidden="true" style="width: 50px;" data-prefix="fas" data-icon="file-medical" class="svg-inline--fa fa-file-medical fa-w-12 logos card-img-top" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M377 105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-153 31V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm64 160v48c0 4.4-3.6 8-8 8h-56v56c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8v-56h-56c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h56v-56c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v56h56c4.4 0 8 3.6 8 8z"></path></svg>
+        <!-- <img class="card-img-top" src="file-medical-solid.svg" style="width: 50px;" alt="Card image cap"> -->
+        </div>
+        <div class="card-body">
+          <p class="card-text">Upload your prescriptions here, and order them whenever you want to, from your nearest Medical Store. <br>
+          <strong>Yep. You read that right.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm">
+      <div class="card shadow" style="width: 18rem;">
+        <div class="text-center">
+          <br>
+        <svg id="playstore" aria-hidden="true" style="width: 50px;" data-prefix="fas" data-icon="prescription-bottle-alt" class="svg-inline--fa fa-prescription-bottle-alt fa-w-12 logos card-img-top" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M360 0H24C10.8 0 0 10.8 0 24v48c0 13.2 10.8 24 24 24h336c13.2 0 24-10.8 24-24V24c0-13.2-10.8-24-24-24zM32 480c0 17.6 14.4 32 32 32h256c17.6 0 32-14.4 32-32V128H32v352zm64-184c0-4.4 3.6-8 8-8h56v-56c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v56h56c4.4 0 8 3.6 8 8v48c0 4.4-3.6 8-8 8h-56v56c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8v-56h-56c-4.4 0-8-3.6-8-8v-48z"></path></svg>
+        <!-- <img class="card-img-top" src="prescription-bottle-alt-solid.svg" style="width: 50px;" alt="Card image cap"> -->
+        </div>
+        <div class="card-body">
+          <p class="card-text">Save all your medical information together for the best experience. One click to your regular meds ordered. <br>
+          <strong>That simple.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm">
+      <div class="card shadow" style="width: 18rem;">
+        <div class="text-center">
+          <br>
+          <svg id="orange" aria-hidden="true" style="width: 76px;" data-prefix="fas" data-icon="pills" class="svg-inline--fa fa-pills fa-w-18 logos" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M112 32C50.1 32 0 82.1 0 144v224c0 61.9 50.1 112 112 112s112-50.1 112-112V144c0-61.9-50.1-112-112-112zm48 224H64V144c0-26.5 21.5-48 48-48s48 21.5 48 48v112zm139.7-29.7c-3.5-3.5-9.4-3.1-12.3.8-45.3 62.5-40.4 150.1 15.9 206.4 56.3 56.3 143.9 61.2 206.4 15.9 4-2.9 4.3-8.8.8-12.3L299.7 226.3zm229.8-19c-56.3-56.3-143.9-61.2-206.4-15.9-4 2.9-4.3 8.8-.8 12.3l210.8 210.8c3.5 3.5 9.4 3.1 12.3-.8 45.3-62.6 40.5-150.1-15.9-206.4z"></path></svg>
+          <!-- <img class="card-img-top" src="prescription-bottle-alt-solid.svg" style="width: 50px;" alt="Card image cap"> -->
+        </div>
+        <div class="card-body">
+          <p class="card-text">Once you get your meds, save them in our app. You can set daily reminders for these, as prescribed by your doctor.<br>
+          <strong>Pretty helpful.</strong></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<br>
+
+<div class="text-center">
+  <svg id="blue" aria-hidden="true" style="width: 30px;" onclick="$(document).scrollTop(850);" data-prefix="fas" data-icon="angle-down" class="svg-inline--fa fa-angle-down fa-w-10 logos" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path></svg>
+</div>
+
+<br>
+
+<div class="text-center">
+  <h2 class="display-3">Completely Hassle-free</h2>
+</div>
+
+<div class="row">
+<div class="col-lg align-self-center">
+  <div class="text-center my-5 mx-3 p-2 shadow">
+    <svg id="red" aria-hidden="true" style="width: 50px; margin-top: 15px;" data-prefix="fas" data-icon="user-md" class="svg-inline--fa fa-user-md fa-w-14 logos" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zM104 424c0 13.3 10.7 24 24 24s24-10.7 24-24-10.7-24-24-24-24 10.7-24 24zm216-135.4v49c36.5 7.4 64 39.8 64 78.4v41.7c0 7.6-5.4 14.2-12.9 15.7l-32.2 6.4c-4.3.9-8.5-1.9-9.4-6.3l-3.1-15.7c-.9-4.3 1.9-8.6 6.3-9.4l19.3-3.9V416c0-62.8-96-65.1-96 1.9v26.7l19.3 3.9c4.3.9 7.1 5.1 6.3 9.4l-3.1 15.7c-.9 4.3-5.1 7.1-9.4 6.3l-31.2-4.2c-7.9-1.1-13.8-7.8-13.8-15.9V416c0-38.6 27.5-70.9 64-78.4v-45.2c-2.2.7-4.4 1.1-6.6 1.9-18 6.3-37.3 9.8-57.4 9.8s-39.4-3.5-57.4-9.8c-7.4-2.6-14.9-4.2-22.6-5.2v81.6c23.1 6.9 40 28.1 40 53.4 0 30.9-25.1 56-56 56s-56-25.1-56-56c0-25.3 16.9-46.5 40-53.4v-80.4C48.5 301 0 355.8 0 422.4v44.8C0 491.9 20.1 512 44.8 512h358.4c24.7 0 44.8-20.1 44.8-44.8v-44.8c0-72-56.8-130.3-128-133.8z"></path></svg>
+    &nbsp;
+    <svg id="red" aria-hidden="true" style="width: 50px; margin-top: 15px;" data-prefix="fas" data-icon="link" class="svg-inline--fa fa-link fa-w-16 logos" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path></svg>
+<br><br>
+    <p class="lead text-center">
+    Let your doctor make the list on our app. A generated link can be shared to you, so you can then confirm your orders to proceed till delivery. <br>
+    <strong>As easy as that.</strong></p>
+  </div>
+</div>
+
+<div class="col-lg align-self-center my-5">
+<img src="{% static 'home/img/check.jpg' %}" class="img-fluid justify-content-center shadow" id="Check">
+</div>
+</div>
+
+  <hr>
+  <h2 class="display-3 text-center my-3">Versatile & Easy to Use</h2>
+
+<div class="row">
+
+  <div class="col-lg align-self-center">
+    <img src="{% static 'home/img/tabspills.jpg' %}" class="img-fluid shadow" id="Tabs & Pills">
+  </div>
+
+  <div class="col-lg align-self-center">
+    <div class="text-center my-5 mx-3 p-2 shadow">
+      <svg id="blue" aria-hidden="true" style="width: 45px; margin-top: 15px;" data-prefix="fas" data-icon="mobile" class="svg-inline--fa fa-mobile fa-w-10 logos" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"></path></svg>
+      &nbsp;
+      <svg id="blue" aria-hidden="true" style="width: 60px; margin-top: 15px;" data-prefix="far" data-icon="clock" class="svg-inline--fa fa-clock fa-w-16 logos" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"></path></svg>
+    <br><br>
+      <p class="lead text-center">Worried about forgetting to take your meds on time? <em>We've gotch'ya.</em> Use the in-built Reminders to set them as per your prescriptions. <br>
+      If you've got a change in your dosage, no need to modify all the reminders. Just change the <em>dosage</em> in the settings, all the remaining reminders will be automatically changed. <br>
+      <strong>Magical.</strong>
+      </p>
+    </div>
+  </div>
+
+</div>
+  <hr>
+  <h2 class="display-2 text-center my-3 bg-warning shadow">Camps</h2>
+
+  <p class="lead text-center my-5 mx-3 border border-warning p-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci quibusdam, debitis rem est, soluta magni illum sequi ipsam vitae quis.
+    Placeat vel iusto necessitatibus blanditiis explicabo sequi cum, accusamus temporibus.
+    Sequi commodi facilis quis fugiat, dolorum deleniti ullam suscipit inventore tempore dolor molestias, perspiciatis hic quasi vero voluptate ea quibusdam corporis laudantium aspernatur illum earum sint eligendi, nobis neque. Eveniet.</p>
+
+<img src="{% static 'home/img/scene.jpg' %}" class="img-fluid" id="Scene">
+
+<hr>
+<div class="text-center">
+<button type="button" class="btn btn-dark my-3 p-2 px-5 shadow rounded" onclick="$(document).scrollTop(0);">Back to top</button>
+</div>
+</div>
+
+<br>
+
+<footer class="bg-dark">
+  <p class="text-center text-secondary px-5 py-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci quibusdam, debitis rem est, soluta magni illum sequi ipsam vitae quis.
+    Placeat vel iusto necessitatibus blanditiis explicabo sequi cum, accusamus temporibus.
+    Sequi commodi facilis quis fugiat, dolorum deleniti ullam suscipit inventore tempore dolor molestias, perspiciatis hic quasi vero voluptate ea quibusdam corporis laudantium aspernatur illum earum sint eligendi, nobis neque. Eveniet.</p>
+<br>
+  <div class="row">
+      <div class="col">
+        <ul class="text-center">
+          <p class="text-light">Links</p>
+          <li><a href="#" class="text-secondary">Home</a></li>
+          <li><a href="" class="text-secondary">Support</a></li>
+          <li><a href="/home/about" class="text-secondary">References</a></li>
+          <li><a href="" class="text-secondary">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="text-center">
+          <p class="text-light">Coming soon on the App Store and Play Store</p>
+          <br>
+          <svg id="appstore" aria-hidden="true" style="width: 60px;" data-prefix="fab" data-icon="app-store" class="svg-inline--fa fa-app-store fa-w-16 logos" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path fill="currentColor" d="M255.9 120.9l9.1-15.7c5.6-9.8 18.1-13.1 27.9-7.5 9.8 5.6 13.1 18.1 7.5 27.9l-87.5 151.5h63.3c20.5 0 32 24.1 23.1 40.8H113.8c-11.3 0-20.4-9.1-20.4-20.4 0-11.3 9.1-20.4 20.4-20.4h52l66.6-115.4-20.8-36.1c-5.6-9.8-2.3-22.2 7.5-27.9 9.8-5.6 22.2-2.3 27.9 7.5l8.9 15.7zm-78.7 218l-19.6 34c-5.6 9.8-18.1 13.1-27.9 7.5-9.8-5.6-13.1-18.1-7.5-27.9l14.6-25.2c16.4-5.1 29.8-1.2 40.4 11.6zm168.9-61.7h53.1c11.3 0 20.4 9.1 20.4 20.4 0 11.3-9.1 20.4-20.4 20.4h-29.5l19.9 34.5c5.6 9.8 2.3 22.2-7.5 27.9-9.8 5.6-22.2 2.3-27.9-7.5-33.5-58.1-58.7-101.6-75.4-130.6-17.1-29.5-4.9-59.1 7.2-69.1 13.4 23 33.4 57.7 60.1 104zM256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm216 248c0 118.7-96.1 216-216 216-118.7 0-216-96.1-216-216 0-118.7 96.1-216 216-216 118.7 0 216 96.1 216 216z"></path></svg>
+          &nbsp;
+          <svg id="playstore" aria-hidden="true" style="width: 60px;" data-prefix="fab" data-icon="google-play" class="svg-inline--fa fa-google-play fa-w-16 logos" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"></path></svg>
+        </div>
+      </div>
+      <div class="col">
+          <ul class="text-center">
+            <p class="text-light">Suggestions</p>
+            <li><a href="/home/about" class="text-secondary">About</a></li>
+            <li><a href="" class="text-secondary">Blog</a></li>
+            <li><a href="" class="text-secondary">Code</a></li>
+            <li><a href="" class="text-secondary">Sources</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  <hr>
+  <p class="text-center text-secondary">Copyright (c) 2018 Manas Acharekar & Aisha Kothare All Rights Reserved.</p>
+  <br>
+</footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
