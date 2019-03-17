@@ -88,14 +88,13 @@
         </div>
         <hr>
         <p class="lead">{{ com }} comment(s)</p>
-        <div>
+        <div class="card card-body">
           <form action="{% url 'view_question' pk=question.pk %}" method="POST">
             {% csrf_token %}
             {{ form|crispy }}
             <button type="submit" class="btn btn-dark">Post</button>
           </form>
           <br>
-        </div>
           {% if comments %}
             <div class="container">
              {% for comment in comments %}
@@ -107,6 +106,8 @@
               {% endfor %}
             </div>
           {% endif %}
+        </div>
+        <br>
       {% endblock %}
     </div>
     

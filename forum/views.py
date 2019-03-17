@@ -74,7 +74,7 @@ def view_question(request, pk):
             comment.post_id = pk
             comment.user_id = request.user.pk
             form.save()
-            # return redirect('')
+            return redirect('..')
 
     else:
         form = PostComment()
