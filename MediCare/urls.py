@@ -14,8 +14,6 @@ urlpatterns = [
     re_path(r'^accounts/password/$', views.change_password, name='change_password'),
     re_path(r'^accounts/profile/reset-password/$', PasswordResetView.as_view(template_name='accounts/reset_password.html'), name='reset_password'),
     re_path(r'^accounts/profile/reset-password/done$', PasswordResetDoneView.as_view(template_name='accounts/reset_password_done.html'), name='password_reset_done'),
-    re_path(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})$', PasswordResetConfirmView.as_view(template_name='accounts/reset_password_confirm.html'), name='password_reset_confirm'),
-    path('accounts/profile/reset-password/complete', PasswordResetCompleteView.as_view(template_name='accounts/reset_password_complete.html'), name='password_reset_complete'),
     re_path(r'^accounts/view_orders/$', views.view_orders, name='view_orders'),
     re_path(r'^accounts/create_order/$', views.create_order, name='create_order'),
     re_path(r'^accounts/<int:pk>$', views.edit_order, name='edit_order'),

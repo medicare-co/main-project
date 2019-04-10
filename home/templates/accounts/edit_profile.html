@@ -70,8 +70,6 @@
         {% csrf_token %}
         {{ form|crispy }}
         <br>
-        <a href="{% url 'edit_details' %}" class="text-warning">Change address and contact details</a>
-        <br><br>
         <button class="btn btn-dark" type="submit">Change</button>
       </form>
 <br><br>

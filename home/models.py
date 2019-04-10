@@ -7,7 +7,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.URLField(default='')
     address = models.CharField(default='', max_length=200)
-    phone = models.IntegerField(default=0)
+    phone = models.CharField(default='', max_length=10)
 
 
 def create_profile(sender, **kwargs):
