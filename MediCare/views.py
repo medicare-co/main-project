@@ -43,7 +43,7 @@ def edit_details(request):
         else:
                 form = EditUserDetailsForm(instance=request.user)
                 args = {'form': form}
-                return render(request, 'accounts/edit_profile.html', args)
+                return render(request, 'accounts/edit_details.html', args)
 
 def edit_order(request, pk):
         order = get_object_or_404(Order, pk=pk)
@@ -57,7 +57,7 @@ def edit_order(request, pk):
         else:
                 form = EditOrder(instance=order)
                 args = {'form': form}
-                return render(request, 'accounts/edit_profile.html', args)
+                return render(request, 'accounts/edit_order.html', args)
 
 def change_password(request):
         if request.method == 'POST':
