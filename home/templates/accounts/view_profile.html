@@ -113,12 +113,28 @@
     <p class="text-center mt-3"><a href="/home/logout">Logout</a></p>
     <hr>
     <div class="text-center">
-        <img src="{% static 'accounts/img/bell.svg' %}" title="Notifications" alt="bell" width="40px;" class="">
-        </div>
+      <img src="{% static 'accounts/img/bell.svg' %}" title="Notifications" alt="bell" width="40px;" class="logos" data-toggle="modal" data-target="#exampleModal">
+      </div>
   </div>
   {% endif %}
 </div>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h3 class="modal-title" id="exampleModalCenterTitle">Notifications</h3>
+        <img src="{% static 'accounts/img/cancel.svg' %}" id="close" alt="close" width="30px" data-dismiss="modal" aria-label="Close" class="logos">
+      </div>
+      <div class="modal-body text-center">
+        <p class="lead text-secondary">All clear! 😁</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
 
 </body>
 </html>

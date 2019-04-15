@@ -69,6 +69,7 @@
       <h2 class="display-4"><strong>Your questions</strong></h2>
         <br>
 
+        <div class="card-columns mt-3">
         {% if questions %}
         {% for question in questions %}
           <div class="card shadow-sm">
@@ -90,8 +91,8 @@
               <strong>Created on: </strong><i>{{ question.date }}</i>
             </div>
           </div>
-          <hr>
         {% endfor %}
+      </div>
         <div>
           <p class="text-muted"><i>Total {{ num }} question(s)</i></p>
       </div>

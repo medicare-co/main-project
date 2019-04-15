@@ -70,7 +70,13 @@
        <form method="POST">
         {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit" value="Submit" class="btn btn-dark">Post</button>
+        <button type="submit" value="Submit" class="btn btn-dark">
+          {% if qType == 'create' %}
+          Post
+          {% else %}
+          Make changes
+          {% endif %}
+        </button>
        </form>
         </div>
       {% endblock %}
