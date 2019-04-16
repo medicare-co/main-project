@@ -62,17 +62,19 @@
   <div class="col">
     <div class="container">
       {% block body %}
+      <div class="">
       <form class="form-inline float-right">
         <input class="form-control mr-sm-2" type="search" placeholder="Search questions" aria-label="Search" name="search" value="{{ term }}">
         <button class="btn btn-light my-2 my-sm-0" type="submit"><img src="{% static 'accounts/img/search.svg' %}" alt="search" width="25px"></button>
       </form>
       <h2 class="display-4"><strong>Your questions</strong></h2>
+    </div>
         <br>
 
         <div class="card-columns mt-3">
         {% if questions %}
         {% for question in questions %}
-          <div class="card shadow-sm">
+          <div class="card">
             <div class="card-body">
               <div class="float-right">
                 <p class="text-muted text-center">
@@ -80,7 +82,7 @@
                     <span class="align-text-bottom">{{ question.likes }}</span>
                 </p>
               </div>
-              <h2><a href="{% url 'view_question' pk=question.pk %}" class="text-secondary">{{ question.question }}</a></h2>
+              <h2><a href="{% url 'view_question' pk=question.pk %}" class="text-secondary text-decoration-none">{{ question.question }}</a></h2>
               <hr>
               <p class="card-text">{{ question.content }}</p>
             </div>

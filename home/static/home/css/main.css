@@ -60,6 +60,10 @@ strong{
   color: rgb(102,220,120);
 }
 
+#close{
+  transition: all 0.5s ease-in-out;
+}
+
 #close:hover{
   cursor: pointer;
 }
@@ -68,6 +72,10 @@ strong{
   color: #000;
   background-color: #fff;
   border-color: #000;
+}
+
+section {
+  height: 100vh !important;
 }
 
 footer p{

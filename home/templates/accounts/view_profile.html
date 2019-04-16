@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'accounts/css/main.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'accounts/css/main.css' %}">
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -82,7 +82,7 @@
       <p><strong>Email</strong>: {{ user.email }}</p>
       <p><strong>Address</strong>: {{ details.address }}</p>
       <p><strong>Contact</strong>: {{ details.phone }}</p>
-      <p><a href="edit" class="text-dark"><i>Change info</i></a></p>
+      <p><a href="edit" class="text-secondary"><i>Change info</i></a></p>
       <br>
 
       {% if items %}
@@ -113,7 +113,7 @@
     <p class="text-center mt-3"><a href="/home/logout">Logout</a></p>
     <hr>
     <div class="text-center">
-      <img src="{% static 'accounts/img/bell.svg' %}" title="Notifications" alt="bell" width="40px;" class="logos" data-toggle="modal" data-target="#exampleModal">
+      <img src="{% static 'accounts/img/bell.svg' %}" title="Notifications" id="bell" alt="bell" width="40px;" class="logos" data-toggle="modal" data-target="#exampleModal">
       </div>
   </div>
   {% endif %}

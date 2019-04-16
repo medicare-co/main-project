@@ -10,10 +10,13 @@ def home_redirect(request):
         return redirect('/home')
 
 def view_profile(request):
-        items = Order.objects.filter(user_id__exact=request.user.pk)[:2]
-        args = {'user': request.user, 'items': items}
+        if request.user.is_authenticated:
+                items = Order.objects.filter(user_id__exact=request.user.pk)[:2]
+                args = {'user': request.user, 'items': items}
 
-        return render(request, 'accounts/view_profile.html', args)
+                return render(request, 'accounts/view_profile.html', args)
+        else:
+                return render(request, 'accounts/error.html', {})
 
 def edit_profile(request):
         try:
@@ -33,31 +36,39 @@ def edit_profile(request):
                 return render(request, 'accounts/edit_profile.html', args)
 
 def edit_details(request):
-        if request.method == 'POST':
-                form = EditUserDetailsForm(request.POST, instance=request.user)
+        if request.user.is_authenticated:
+                if request.method == 'POST':
+                        form = EditUserDetailsForm(request.POST, instance=request.user)
 
-                if form.is_valid():
-                        form.save()
-                        return redirect('.')
+                        if form.is_valid():
+                                form.save()
+                                return redirect('.')
 
+                else:
+                        form = EditUserDetailsForm(instance=request.user)
+                        args = {'form': form}
+                        return render(request, 'accounts/edit_details.html', args)
+        
         else:
-                form = EditUserDetailsForm(instance=request.user)
-                args = {'form': form}
-                return render(request, 'accounts/edit_details.html', args)
+                return render(request, 'accounts/error.html', {})
 
 def edit_order(request, pk):
-        order = get_object_or_404(Order, pk=pk)
+        if request.user.is_authenticated:
+                order = get_object_or_404(Order, pk=pk)
 
-        if request.method == 'POST':
-                form = EditOrder(request.POST, instance=order)
-                if form.is_valid():
-                        form.save()
-                return redirect('.')
+                if request.method == 'POST':
+                        form = EditOrder(request.POST, instance=order)
+                        if form.is_valid():
+                                form.save()
+                        return redirect('.')
 
+                else:
+                        form = EditOrder(instance=order)
+                        args = {'form': form}
+                        return render(request, 'accounts/edit_order.html', args)
+        
         else:
-                form = EditOrder(instance=order)
-                args = {'form': form}
-                return render(request, 'accounts/edit_order.html', args)
+                return render(request, 'accounts/error.html', {})
 
 def change_password(request):
         if request.method == 'POST':
@@ -77,31 +88,39 @@ def change_password(request):
                 return render(request, 'accounts/change_password.html', args)
 
 def view_orders(request):
-        term = ''
-        items = Order.objects.filter(user_id__exact=request.user.pk)
+        if request.user.is_authenticated:
+                term = ''
+                items = Order.objects.filter(user_id__exact=request.user.pk)
 
-        if 'search' in request.GET:
-                term = request.GET['search']
-                items = items.filter(name__icontains=term)
-        
-        num = len(items)
-        args = {'user': request.user, 'items': items, 'num': num, 'doc': randint(0,1), 'term': term}
+                if 'search' in request.GET:
+                        term = request.GET['search']
+                        items = items.filter(name__icontains=term)
+                
+                num = len(items)
+                args = {'user': request.user, 'items': items, 'num': num, 'doc': randint(0,1), 'term': term}
 
-        return render(request, 'accounts/view_orders.html', args)
+                return render(request, 'accounts/view_orders.html', args)
+
+        else:
+                return render(request, 'accounts/error.html', {})
 
 def create_order(request):
-        if request.method == 'POST':
-                form = CreateOrder(request.POST)
-                if form.is_valid():
-                        order = form.save(commit=False)
-                        order.name = form.cleaned_data['name']
-                        order.contents = form.cleaned_data['contents']
-                        order.creator = request.user
-                        order.user_id = request.user.pk
-                        form.save()
-                        return redirect('view_orders')
-        else:
-                form = CreateOrder()
+        if request.user.is_authenticated:
+                if request.method == 'POST':
+                        form = CreateOrder(request.POST)
+                        if form.is_valid():
+                                order = form.save(commit=False)
+                                order.name = form.cleaned_data['name']
+                                order.contents = form.cleaned_data['contents']
+                                order.creator = request.user
+                                order.user_id = request.user.pk
+                                form.save()
+                                return redirect('view_orders')
+                else:
+                        form = CreateOrder()
 
-                args = {'form': form}
-                return render(request, 'accounts/create_order.html', args)
+                        args = {'form': form}
+                        return render(request, 'accounts/create_order.html', args)
+        
+        else:
+                return render(request, 'accounts/error.html', {})
